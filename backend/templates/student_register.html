@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Student Registration Form -->
+<div class="container" style="background: #000000; max-width: 100%;">
+  <div class="maincontent">
+    <h2 class="tagline">Student Registration</h2>
+    <form class="login-form" id="student-registration-form" style="max-width: 400px; margin: 50px auto;">
+      <div class="mb-3">
+        <label for="name" class="form-label" style="color: white;">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+      </div>
+      <div class="mb-3">
+        <label for="username" class="form-label" style="color: white;">Username</label>
+        <input type="text" class="form-control" id="username" placeholder="Enter a username" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label" style="color: white;">Email address</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+      </div>
+      <div class="mb-3">
+        <label for="dob" class="form-label" style="color: white;">Date of Birth</label>
+        <input type="date" class="form-control" id="dob" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label" style="color: white;">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+      </div>
+      <div class="mb-3">
+        <label for="confirm-password" class="form-label" style="color: white;">Confirm Password</label>
+        <input type="password" class="form-control" id="confirm-password" placeholder="Confirm your password" required>
+      </div>
+      <div class="form-group"><button type="submit" class="btn btn-primary w-100">Register</button></div>
+      <div class="form-group"><button type="button" class="btn btn-danger w-100 mt-2" onclick="window.location.href='signup.html'">Cancel</button></div>
+    </form>
+  </div>
+</div>
+
+
+<script>
+  document.getElementById('student-registration-form').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevent form submission from reloading the page
+
+    // Get the form values
+    const name = document.getElementById('name').value;
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const dob = document.getElementById('dob').value;
+    const password = document.getElementById('password').value.trim();  // Remove spaces
+    const confirmPassword = document.getElementById('confirm-password').value.trim();  // Remove spaces
+
+    // Check if passwords match
+    if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+    }
+
+    // Create the data object to send to the server
+    const studentData = {
+        name,
+        username,
+        email,
+        dob,
+        password
+    };
+
+    // Send the data to the server via fetch API
+    try {
+        const response = await fetch('http://localhost:5000/student_register', {  // Ensure this is correct
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(studentData)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            alert('Registration successful');
+            window.location.href = '/login'; // Redirect to login page after successful registration
+        } else {
+            alert(result.message || 'Something went wrong');
+        }
+    } catch (error) {
+        console.error("Error during registration:", error);
+        alert("Error registering. Please try again.");
+    }
+});
+</script>
+{% endblock %}

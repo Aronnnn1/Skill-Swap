@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+  <!-- Java Content -->
+  <div class="container">
+    <div class="maincontent">
+
+      <h2 class="tagline">Master Java Programming</h2>
+
+      <div class="about-us-text" style="text-align: justify;">
+        <p>
+          Java is a versatile, platform-independent programming language used for developing web, mobile, and desktop applications. 
+          It is widely recognized for its reliability, scalability, and strong community support. 
+          Java's "write once, run anywhere" capability allows code to run seamlessly on various platforms.
+          With its rich API and powerful libraries, Java simplifies complex development tasks.
+          It is the backbone of Android development and is extensively used in enterprise applications. 
+          Learning Java can open doors to numerous career opportunities in software development.
+        </p>
+      </div>
+
+      <div class="text-center">
+        <img src="{{ url_for('static', filename='images/java_page.png') }}" alt="Java Programming" class="desc-img" style="width: 450px; margin-top: 20px; mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Learn Now Button -->
+  {% if current_user.is_authenticated %}
+      <a href="{{ url_for('video_tiles', subject='java') }}" class="learn-now-btn"><button class="btn btn-primary">Learn Now</button></a>
+  {% else %}
+      <a href="{{ url_for('login') }}" class="learn-now-btn"><button class="btn btn-primary">Learn Now</button></a>
+  {% endif %}
+{% endblock %}

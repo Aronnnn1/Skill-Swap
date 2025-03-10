@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+  <!-- Guitar Content -->
+  <div class="container">
+    <div class="maincontent">
+
+      <h2 class="tagline">Master Guitar</h2>
+
+      <div class="about-us-text" style="text-align: justify;">
+        <p>
+          The guitar is a versatile and popular instrument, perfect for expressing creativity through music. Whether you're strumming chords, playing intricate solos, or writing your own songs, the guitar offers endless possibilities. It’s great for beginners and experienced musicians alike, allowing you to explore a wide range of genres from rock to classical to blues.
+        </p>
+      </div>
+
+      <div class="text-center">
+        <img src="{{ url_for('static', filename='images/guitar_page.jpeg') }}" alt="Guitar" class="desc-img" style="width: 450px; height: 350px; margin-top: 20px; mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Learn Now Button -->
+  {% if current_user.is_authenticated %}
+      <a href="{{ url_for('video_tiles', subject='guitar') }}" class="learn-now-btn"><button class="btn btn-primary">Learn Now</button></a>
+  {% else %}
+      <a href="{{ url_for('login') }}" class="learn-now-btn"><button class="btn btn-primary">Learn Now</button></a>
+  {% endif %}
+{% endblock %}

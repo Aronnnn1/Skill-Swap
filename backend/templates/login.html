@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+  <!-- Login Content -->
+  <div class="container">
+    <div class="maincontent">
+        <img src="{{ url_for('static', filename='images/skillswap_logo.png') }}" alt="logo" class="img-container" style="height:200px; width:200px; margin-left: auto; margin-right: auto;margin-top: 0px;">
+        <h2 class="tagline" style="margin-top: auto;">Login to Skill-Swap</h2>
+      <!-- Login Form -->
+      <form class="login-form" style="max-width: 400px; margin: 50px auto; padding: 20px; background-color: rgba(0, 0, 0, 0.6); border-radius: 8px;" method="POST">
+        <div class="mb-3">
+          <label for="email" class="form-label" style="color: white; margin-right: 250px;">Email address</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter your email" name="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label" style="color: white; margin-right: 283px; margin-top: 10px;">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter your password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100" style="margin-top: 30px;">Login</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

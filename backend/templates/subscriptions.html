@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="maincontent">
+    <img src="{{ url_for('static', filename='images/skillswap_logo.png') }}" alt="logo" class="img-container" style="height: 200px; width: 200px; margin-left: auto; margin-right: auto; margin-top: 0px;">
+    <h2 class="tagline" style="margin-top: 20px; text-align: center; color: white;">Choose Your Subscription Plan</h2>
+
+    <!-- Subscription Form -->
+    <form class="login-form" style="max-width: 400px; margin: 50px auto; padding: 20px; background-color: rgba(0, 0, 0, 0.6); border-radius: 8px;" method="POST">
+      <div class="mb-3">
+        <label for="plan" class="form-label" style="color: white;">Select Plan</label>
+        <select name="plan" id="plan" class="form-control">
+          <option value="1 week">1 Week - Rs 500</option>
+          <option value="1 month">1 Month - Rs 1000</option>
+          <option value="6 months">6 Months - Rs 1500</option>
+          <option value="12 months">12 Months - Rs 2500</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary w-100" style="margin-top: 30px;">Subscribe</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

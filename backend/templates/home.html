@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+  <!-- Homepage Content -->
+  <div class="container">
+    <div class="maincontent">
+      <div class="tagline">
+        Inspire Curiosity, Ignite Growth
+      </div>
+      <div class="quote">
+        "The beautiful thing about learning is that no one can take it away from you." - B.B. King
+      </div>
+      <div class="img-container">
+        <img src="https://t3.ftcdn.net/jpg/04/49/66/66/360_F_449666605_gz564E08BQLZiwV2v9wO2G4bExKiJ4se.jpg" alt="Instruments Image">
+        <img src="https://nighteye.app/wp-content/uploads/2020/04/why-programmers-work-with-dark-mode-700x480.png" alt="Programming Image">
+        <img src="https://images.stockcake.com/public/2/a/2/2a247886-6573-4f25-83a9-2b379aca5b5a_large/sunrise-yoga-pose-stockcake.jpg" alt="Yoga Image">
+      </div>
+    </div>
+  </div>
+
+  <!-- Flash Messages -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="container mt-3">
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+{% endblock %}

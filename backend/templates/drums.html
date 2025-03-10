@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+  <!-- Drums Content -->
+  <div class="container">
+    <div class="maincontent">
+
+      <h2 class="tagline">Master Drums</h2>
+
+      <div class="about-us-text" style="text-align: justify;">
+        <p>
+            Drums are the heartbeat of music, providing rhythm and energy to any genre. Whether you’re playing a simple beat or a complex solo, drums offer a dynamic way to express yourself. From acoustic drum kits to electronic sets, drumming is all about timing, coordination, and creativity, making it a fun and powerful instrument for musicians of all levels.
+        </p>
+      </div>
+
+      <div class="text-center">
+        <img src="{{ url_for('static', filename='images/drums_page.png') }}" alt="Drums" class="desc-img" style="width: 450px; height: 400px; margin-top: 20px; mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Learn Now Button -->
+  {% if current_user.is_authenticated %}
+      <a href="{{ url_for('video_tiles', subject='drums') }}" class="learn-now-btn"><button class="btn btn-primary">Learn Now</button></a>
+  {% else %}
+      <a href="{{ url_for('login') }}" class="learn-now-btn"><button class="btn btn-primary">Learn Now</button></a>
+  {% endif %}
+{% endblock %}

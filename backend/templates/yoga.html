@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+  <!-- Yoga Content -->
+  <div class="container">
+    <div class="maincontent">
+
+      <h2 class="tagline">Master Yoga</h2>
+
+      <div class="about-us-text" style="text-align: justify;">
+        <p>
+            Yoga is a practice that combines physical poses, breathing exercises, and mindfulness to promote relaxation, flexibility, and strength. It’s great for reducing stress, improving posture, and enhancing overall well-being. Whether you're a beginner or an experienced yogi, yoga offers a peaceful way to connect body and mind while boosting health and energy.
+        </p>
+      </div>
+
+      <div class="text-center">
+        <img src="{{ url_for('static', filename='images/yoga_page.png') }}" alt="Yoga" class="desc-img" style="width: 450px; margin-top: 20px; mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Learn Now Button -->
+  {% if current_user.is_authenticated %}
+      <a href="{{ url_for('video_tiles', subject='yoga') }}" class="learn-now-btn"><button class="btn btn-primary">Learn Now</button></a>
+  {% else %}
+      <a href="{{ url_for('login') }}" class="learn-now-btn"><button class="btn btn-primary">Learn Now</button></a>
+  {% endif %}
+{% endblock %}

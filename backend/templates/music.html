@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+  <!-- Musical Instruments Content -->
+  <div class="container">
+    <div class="maincontent">
+      <h2 class="tagline">Explore Music Instruments</h2>
+      <p class="quote">Click on an image to explore more...</p>
+
+      <!-- Musical Instruments Images -->
+      <div class="img-container">
+        <a href="{{ url_for('guitar') }}">
+          <img src="{{ url_for('static', filename='images/guitar.jpg') }}" alt="Guitar" class="dropdown-img">
+        </a>
+        <a href="{{ url_for('piano') }}">
+          <img src="{{ url_for('static', filename='images/piano.jpg') }}" alt="Piano" class="dropdown-img">
+        </a>
+        <a href="{{ url_for('drums') }}">
+          <img src="{{ url_for('static', filename='images/drums.jpg') }}" alt="Drums" class="dropdown-img">
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

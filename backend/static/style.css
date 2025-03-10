@@ -1,0 +1,326 @@
+/* Custom Styles */
+html, body {
+    background-color: #0c0b0d;
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+    height: 100%;
+}
+
+.maincontent {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.tagline {
+    font-size: 3rem;
+    font-family: "Inter", sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+.quote {
+    font-size: 1.5rem;
+    font-style: italic;
+    margin-bottom: 40px;
+    color: #b1a7a7;
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 40px;
+}
+
+.img-container img {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* About Us */
+.about-us-text {
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Navbar */
+/*bootstrap*/
+.navbar {
+    background-color: #1b1a1a; 
+}
+
+/*bootstrap*/
+.navbar-nav .nav-link {
+    color: rgb(255, 255, 255); 
+    padding: 20px 100px; 
+}
+
+/*bootstrap*/
+.navbar-nav .nav-link:hover {
+    color: #ebe786; 
+}
+
+/*bootstrap*/
+.navbar-brand {
+    color: white; 
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/*bootstrap*/
+.btn-primary {
+    background-color: #007bff; 
+    border-color: #007bff; 
+}
+
+/*bootstrap*/
+.btn-primary:hover {
+    background-color: #0056b3; 
+    border-color: #0056b3;
+}
+
+/* Services Images */
+.dropdown-img {
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.dropdown-img:hover {
+    transform: scale(1.1);
+}
+
+.desc-img {
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/* Modal */
+/*bootstrap*/
+.modal {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+/* Modal Background */
+/*bootstrap*/
+.modal-content {
+    background-color: #211e27; 
+    color: #ffffff; 
+    padding: 30px;
+    border-radius: 12px;
+    width: 450px;
+    max-width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+/* Heading inside the modal */
+.modal-content h2 {
+    font-size: 1.8rem; 
+    margin-bottom: 20px; 
+    text-align: center; 
+}
+
+/* Input fields inside modal */
+.modal-content input, .modal-content textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #211e27; 
+    border-radius: 8px;
+    background-color: #2a2733; 
+    color: #ffffff; 
+}
+
+/* Modal textareas */
+.modal-content textarea {
+    min-height: 150px; /* Ensures the box is large enough to show multiple lines */
+    resize: vertical;  /* Allows the user to resize the textarea vertically */
+}
+
+/* Buttons inside modal */
+.modal-content button {
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    padding: 15px 30px; /* Larger padding for buttons */
+    border-radius: 30px; /* More rounded corners */
+    border: none; /* Remove border */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-top: 15px; /* Space between the button and form fields */
+    transition: background-color 0.3s ease;
+}
+
+/* Hover over buttons */
+.modal-content button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Cancel Button */
+.modal-content button[type="button"] {
+    background-color: #f44336; 
+}
+
+/* Hover over cancel */
+.modal-content button[type="button"]:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+
+/* Subject buttons */
+.subject-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Default for subject buttons */
+.subject-btn {
+    background-color: #1b1a1a; 
+    color: #fff; 
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    outline: none;
+}
+
+/* Hover over subject buttons */
+.subject-btn:hover {
+    background-color: #ebe786; 
+    color: #211e27; 
+}
+
+/* When subject button is selected */
+.subject-btn.selected {
+    background-color: #ebe786; 
+    color: #211e27; 
+}
+
+.subject-btn:active {
+    background-color: #ebe786; /* Keep golden background on active */
+    color: #211e27; /* Keep dark text on active */
+}
+
+/* Signup buttons */
+.signup-options button {
+    background-color: #007bff; 
+    color: white;
+    font-size: 1.2rem; 
+    padding: 15px 30px; 
+    border-radius: 30px; 
+    border: none; 
+    cursor: pointer; 
+    margin-top: 20px; 
+    transition: background-color 0.3s ease; 
+}
+
+.signup-options button:hover {
+    background-color: #0056b3; 
+}
+
+.signup-options button + button {
+    margin-left: 15px; 
+}
+
+/* Learn Now Button */
+.learn-now-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+}
+
+.learn-now-btn button {
+    padding: 15px 25px;
+    font-size: 1.2rem;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.learn-now-btn button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+/* Add space between label and form fields */
+.form-group {
+    margin-top: 25px;  /* Increase space between label and input field */
+}
+
+.profile-pic {
+    width: 35px;
+    height: 35px;
+    margin-top: -10px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Video Tiles Section */
+.video-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between tiles */
+    padding: 20px;
+}
+
+/* Individual Video Tile */
+.video-tile {
+    background-color: #1b1a1a; /* Dark background for tiles */
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.video-tile:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Video Thumbnail */
+.video-tile img {
+    width: 100%; /* Ensure the image fits the tile */
+    height: 180px; /* Fixed height for consistency */
+    object-fit: cover; /* Crop to maintain aspect ratio */
+}
+
+/* Caption Styling */
+.video-tile p {
+    color: #ffffff; /* White text */
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none; /* Remove underline */
+}
+
+.video-tile a {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit text color */
+}

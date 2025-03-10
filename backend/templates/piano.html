@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+  <!-- Piano Content -->
+  <div class="container">
+    <div class="maincontent">
+
+      <h2 class="tagline">Master Piano</h2>
+
+      <div class="about-us-text" style="text-align: justify;">
+        <p>
+          The piano is a timeless instrument known for its rich sound and versatility. Whether you're playing classical pieces, jazz improvisations, or modern tunes, the piano offers endless opportunities for musical expression. With its broad range of notes and ability to create both melody and harmony, it’s a perfect instrument for musicians of all skill levels.
+        </p>
+      </div>
+
+      <div class="text-center">
+        <img src="{{ url_for('static', filename='images/piano_page.jpeg') }}" alt="Piano" class="desc-img" style="width: 450px; height: 400px; margin-top: 20px; mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Learn Now Button -->
+  {% if current_user.is_authenticated %}
+      <a href="{{ url_for('video_tiles', subject='piano') }}" class="learn-now-btn"><button class="btn btn-primary">Learn Now</button></a>
+  {% else %}
+      <a href="{{ url_for('login') }}" class="learn-now-btn"><button class="btn btn-primary">Learn Now</button></a>
+  {% endif %}
+{% endblock %}

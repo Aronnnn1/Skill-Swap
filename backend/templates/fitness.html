@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+  <!-- Fitness Content -->
+  <div class="container">
+    <div class="maincontent">
+
+      <h2 class="tagline">Master Fitness</h2>
+
+      <div class="about-us-text" style="text-align: justify;">
+        <p>
+            Physical fitness is all about keeping your body strong, healthy, and active. It includes regular exercise like cardio, strength training, and flexibility work, helping to improve stamina, endurance, and overall health. Staying fit boosts energy levels, reduces stress, and helps prevent illness, making it key to living a long and balanced life.
+        </p>
+      </div>
+
+      <div class="text-center">
+        <img src="{{ url_for('static', filename='images/fitness_page.png') }}" alt="Fitness" class="desc-img" style="width: 450px; height: 350px; margin-top: 20px; mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Learn Now Button -->
+  {% if current_user.is_authenticated %}
+      <a href="{{ url_for('video_tiles', subject='fitness') }}" class="learn-now-btn"><button class="btn btn-primary">Learn Now</button></a>
+  {% else %}
+      <a href="{{ url_for('login') }}" class="learn-now-btn"><button class="btn btn-primary">Learn Now</button></a>
+  {% endif %}
+{% endblock %}

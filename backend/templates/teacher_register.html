@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Teacher Registration Form -->
+<div class="container">
+  <div class="maincontent">
+    <h2 class="tagline">Teacher Registration</h2>
+    <form id="teacher-registration-form" class="login-form" style="max-width: 400px; margin: 50px auto;">
+      <div class="mb-3">
+        <label for="name" class="form-label" style="color: white;">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+      </div>
+      <div class="mb-3">
+        <label for="username" class="form-label" style="color: white;">Username</label>
+        <input type="text" class="form-control" id="username" placeholder="Enter a username" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label" style="color: white;">Email address</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+      </div>
+      <div class="mb-3">
+        <label for="dob" class="form-label" style="color: white;">Date of Birth</label>
+        <input type="date" class="form-control" id="dob" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label" style="color: white;">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+      </div>
+      <div class="mb-3">
+        <label for="confirm-password" class="form-label" style="color: white;">Confirm Password</label>
+        <input type="password" class="form-control" id="confirm-password" placeholder="Confirm your password" required>
+      </div>
+      <div id="password-error" style="color: red; display: none;">
+        Passwords do not match!
+      </div>
+      <div class="mb-3">
+        <label for="subjects" class="form-label" style="color: white;">Select Subjects</label>
+        <div id="subjects" class="subject-buttons">
+          <button type="button" class="subject-btn" onclick="selectSubject(this)">Python</button>
+          <button type="button" class="subject-btn" onclick="selectSubject(this)">Java</button>
+          <button type="button" class="subject-btn" onclick="selectSubject(this)">MySQL</button>
+          <button type="button" class="subject-btn" onclick="selectSubject(this)">Excel</button>
+          <button type="button" class="subject-btn" onclick="selectSubject(this)">Guitar</button>
+          <button type="button" class="subject-btn" onclick="selectSubject(this)">Piano</button>
+          <button type="button" class="subject-btn" onclick="selectSubject(this)">Drums</button>
+          <button type="button" class="subject-btn" onclick="selectSubject(this)">Yoga</button>
+          <button type="button" class="subject-btn" onclick="selectSubject(this)">Fitness</button>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="experience" class="form-label" style="color: white;">Experience</label>
+        <textarea class="form-control" id="experience" rows="4" placeholder="Describe your teaching experience" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Register</button>
+      <button type="button" class="btn btn-danger w-100 mt-2" onclick="window.location.href='signup.html'">Cancel</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Store selected subjects
+  let selectedSubjects = [];
+  
+  function selectSubject(button) {
+    const subject = button.textContent;
+    const maxSubjects = 3;
+
+    // Toggle the selected state of the button
+    button.classList.toggle('selected');
+    
+    // Deselect if already selected
+    if (selectedSubjects.includes(subject)) {
+      selectedSubjects = selectedSubjects.filter(item => item !== subject);  // Remove from selected
+    } else {
+      if (selectedSubjects.length < maxSubjects) {
+        selectedSubjects.push(subject);  // Add to selected
+      } else {
+        alert("You can select up to 3 subjects only.");
+        button.classList.remove('selected');
+      }
+    }
+    
+    // Optionally update the button style for selected/deselected state
+    button.classList.toggle('btn-secondary', selectedSubjects.includes(subject));
+    button.classList.toggle('btn-primary', !selectedSubjects.includes(subject));
+  }
+
+  document.getElementById('teacher-registration-form').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const dob = document.getElementById('dob').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+    const experience = document.getElementById('experience').value;
+
+    // Check if passwords match
+    if (password !== confirmPassword) {
+        document.getElementById('password-error').style.display = 'block';
+        return;
+    } else {
+        document.getElementById('password-error').style.display = 'none';
+    }
+
+    const teacherData = {
+        name,
+        username,
+        email,
+        dob,
+        password,
+        subjects: selectedSubjects,
+        experience
+    };
+
+    try {
+        const response = await fetch('http://localhost:5000/teacher_register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(teacherData)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            alert('Teacher registration successful');
+            window.location.href = 'login.html';  // Redirect to login page after registration
+        } else {
+            alert(result.message || 'Error occurred during registration');
+        }
+    } catch (error) {
+        console.error('Error registering teacher:', error);
+        alert('Error registering. Please try again.');
+    }
+});
+</script>
+{% endblock %}

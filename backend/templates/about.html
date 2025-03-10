@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+  <!-- About Us Content -->
+  <div class="container">
+    <div class="maincontent" style="text-align: center; padding: 50px 0;">
+      <div class="img-container" style="width:400px; height:300px; margin-top:5px; margin-left:420px;">
+        <img src="{{ url_for('static', filename='images/skillswap_logo.png') }}" height="50" width="50" alt="Logo">
+      </div>
+      <div class="about-us-text" style="text-align: justify; margin-top: 0px; line-height:1.8; max-width: 800px; margin-left: auto; margin-right: auto; padding: 20px;">
+        Welcome to Skill-Swap – the ultimate spot to learn something new and level up your skills! Whether you're vibing to pick up a new hobby, dive into a creative passion, or just want to try something different, we've got you. Skill Swap connects you with cool, skilled instructors who are ready to teach anything from music and art to languages and tech. It's all about learning on your terms, at your own pace, and having fun while you do it. Ready to swap skills and start something awesome? Let’s go!
+      </div>
+    </div>
+  </div>
+  {% endblock %}

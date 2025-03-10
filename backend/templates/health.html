@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+  <!-- Health and Wellness Content -->
+  <div class="container">
+    <div class="maincontent">
+      <h2 class="tagline">Explore Health and Wellness</h2>
+      <p class="quote">Click on an image to explore more...</p>
+
+      <!-- Health and Wellness Images -->
+      <div class="img-container">
+        <a href="{{ url_for('yoga') }}">
+          <img src="{{ url_for('static', filename='images/yoga.jpg') }}" alt="Yoga" class="dropdown-img">
+        </a>
+        <a href="{{ url_for('fitness') }}">
+          <img src="{{ url_for('static', filename='images/fitness.jpg') }}" alt="Fitness" class="dropdown-img">
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

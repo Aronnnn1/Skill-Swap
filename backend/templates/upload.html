@@ -1,0 +1,86 @@
+<!-- upload.html -->
+{% extends "base.html" %}
+{% block content %}
+    <div class="maincontent">
+        <h2 class="tagline">Upload Video</h2>
+        <form class="login-form" id="upload-form" method="POST" style="max-width: 400px; margin: 50px auto;" action="/upload_video">
+            <div class="mb-3">
+                <label for="video" class="form-label" style="color: white;">Upload Video</label>
+                <input type="file" class="form-control" id="video" name="video" accept="video/*" required>
+            </div>
+            <div class="mb-3">
+                <label for="caption" class="form-label" style="color: white;">Caption</label>
+                <input type="text" class="form-control" id="caption" name="caption" required>
+            </div>
+            <div class="mb-3">
+                <label for="subject" class="form-label" style="color: white;">Select Subject</label>
+                <div id="subjects" class="subject-buttons">
+                  <button type="button" class="subject-btn" onclick="selectSubject(this)">Python</button>
+                  <button type="button" class="subject-btn" onclick="selectSubject(this)">Java</button>
+                  <button type="button" class="subject-btn" onclick="selectSubject(this)">MySQL</button>
+                  <button type="button" class="subject-btn" onclick="selectSubject(this)">Excel</button>
+                  <button type="button" class="subject-btn" onclick="selectSubject(this)">Guitar</button>
+                  <button type="button" class="subject-btn" onclick="selectSubject(this)">Piano</button>
+                  <button type="button" class="subject-btn" onclick="selectSubject(this)">Drums</button>
+                  <button type="button" class="subject-btn" onclick="selectSubject(this)">Yoga</button>
+                  <button type="button" class="subject-btn" onclick="selectSubject(this)">Fitness</button>
+            </div>
+            <button type="submit" class="btn btn-primary w-100" style="margin-top: 30px;">Upload</button>
+        </form>
+    </div>
+
+<script>
+  let selectedSubject = "";
+
+  function selectSubject(button) {
+    const buttons = document.querySelectorAll('.subject-btn');
+    buttons.forEach((btn) => btn.classList.remove('selected'));
+    button.classList.add('selected');
+    selectedSubject = button.textContent.trim();  
+  }
+
+  document.getElementById('upload-form').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    const caption = document.getElementById('caption').value;
+    const video = document.getElementById('video').files[0];
+
+    if (!selectedSubject) {
+      alert("Please select a valid subject.");
+      return;
+    }
+
+    try {
+      // Fetch the teacher's registered subjects from the session or database
+      const response = await fetch('/get_teacher_subjects', {
+        method: 'GET',
+      });
+      const teacherSubjects = await response.json();
+
+      if (!teacherSubjects.includes(selectedSubject)) {
+        alert("You cannot upload to this subject, as you didn't register for it.");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('video', video);
+      formData.append('caption', caption);
+      formData.append('subject', selectedSubject);
+
+      const uploadResponse = await fetch('/upload_video', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (uploadResponse.ok) {
+        alert("Video uploaded successfully!");
+      } else {
+        alert("Failed to upload video.");
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred while uploading the video.');
+    }
+  });
+</script>
+{% endblock %}

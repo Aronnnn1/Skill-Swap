@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+  <!-- Programming Content -->
+  <div class="container">
+    <div class="maincontent">
+      <h2 class="tagline">Explore Computer Skills</h2>
+      <p class="quote">Click on an image to explore more...</p>
+
+      <!-- Programming Languages Images -->
+      <div class="img-container">
+        <a href="{{ url_for('java') }}">
+          <img src="{{ url_for('static', filename='images/java.jpg') }}" alt="Java" class="dropdown-img">
+        </a>
+        <a href="{{ url_for('python') }}">
+          <img src="{{ url_for('static', filename='images/python.jpg') }}" alt="Python" class="dropdown-img">
+        </a>
+        <a href="{{ url_for('mysql') }}">
+          <img src="{{ url_for('static', filename='images/mysql.jpg') }}" alt="MySQL" class="dropdown-img">
+        </a>
+        <a href="{{ url_for('excel') }}">
+          <img src="{{ url_for('static', filename='images/excel.jpg') }}" alt="Excel" class="dropdown-img">
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+  <!-- MySQL Content -->
+  <div class="container">
+    <div class="maincontent">
+
+      <h2 class="tagline">Master MySQL</h2>
+
+      <div class="about-us-text" style="text-align: justify;">
+        <p>
+            MySQL is the go-to language for managing and working with databases. It lets you easily store, retrieve, and manipulate data with simple commands. Whether you're pulling reports, updating records, or running complex queries, SQL is powerful yet straightforward, making it essential for developers, analysts, and anyone working with data.
+        </p>
+      </div>
+
+      <div class="text-center">
+        <img src="{{ url_for('static', filename='images/mysql_page.png') }}" alt="MySQL" class="desc-img" style="height: 250px; width: 400px;">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Learn Now Button -->
+  {% if current_user.is_authenticated %}
+      <a href="{{ url_for('video_tiles', subject='mysql') }}" class="learn-now-btn"><button class="btn btn-primary">Learn Now</button></a>
+  {% else %}
+      <a href="{{ url_for('login') }}" class="learn-now-btn"><button class="btn btn-primary">Learn Now</button></a>
+  {% endif %}
+{% endblock %}

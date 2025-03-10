@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Signup Selection -->
+<div class="maincontent" style="background: #000000; min-height: 100vh;">
+    <img src="{{ url_for('static', filename='images/skillswap_logo.png') }}" alt="logo" style="height:200px; width:200px; margin-left: auto; margin-right: auto;margin-top: 0px;">
+    <h2 class="tagline" style="margin-top: auto;">Join Skill-Swap</h2>
+    <div class="signup-options">
+        <a href="{{ url_for('student_register') }}"><button style="margin-right: 30px;">Sign up as Student</button></a>
+        <a href="{{ url_for('teacher_register') }}"><button>Sign up as Teacher</button></a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="maincontent" style="width: 100%;">
+        <h1 style="color: white; text-align: center;">{{ subject.capitalize() }} Videos</h1>
+    <div class="video-tiles">
+        {% for video in videos %}
+            <div class="video-tile">
+                <a href="{{ url_for('static', filename='videos/' + video['video_path']) }}" target="_blank">
+                    <img src="{{ url_for('static', filename='videos/' + video['thumbnail_path']) }}" alt="{{ video['caption'] }}" />
+                    <p>{{ video['caption'] }}</p>
+                </a>
+            </div>
+        {% else %}
+            <p style="color: white; text-align: center; margin-top: 30px; margin-left: 263px; width: 100vh;">No videos available for this subject yet.</p>
+        {% endfor %}
+    </div>
+</div>
+    {% endblock %}
